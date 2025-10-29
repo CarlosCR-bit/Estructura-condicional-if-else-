@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos IF-ELSE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ejemplo {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .ejemplo:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ejemplo h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .excelente {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .aprobado {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .reprobado {
+            background: #f44336;
+            color: white;
+        }
+        
+        .mayor {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .menor {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .success {
+            background: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎯 Ejemplos de IF-ELSE en JavaScript</h1>
+
+        <!-- Ejemplo 1: Verificar Edad -->
+        <div class="ejemplo">
+            <h2>📅 Ejemplo 1: Verificar Edad</h2>
+            <div class="input-group">
+                <label for="edad">Ingresa tu edad:</label>
+                <input type="number" id="edad" placeholder="Ejemplo: 18">
+            </div>
+            <button onclick="verificarEdad()">Verificar</button>
+            <div id="resultadoEdad" class="resultado"></div>
+        </div>
+
+        <!-- Ejemplo 2: Calificaciones -->
+        <div class="ejemplo">
+            <h2>📚 Ejemplo 2: Calificaciones</h2>
+            <div class="input-group">
+                <label for="nota">Ingresa tu nota (0-100):</label>
+                <input type="number" id="nota" placeholder="Ejemplo: 85" min="0" max="100">
+            </div>
+            <button onclick="verificarNota()">Verificar</button>
+            <div id="resultadoNota" class="resultado"></div>
+        </div>
+
+        <!-- Ejemplo 3: Verificar Nombre -->
+        <div class="ejemplo">
+            <h2>👤 Ejemplo 3: Verificar Nombre</h2>
+            <div class="input-group">
+                <label for="nombre">Ingresa tu nombre:</label>
+                <input type="text" id="nombre" placeholder="Ejemplo: María">
+            </div>
+            <button onclick="verificarNombre()">Verificar</button>
+            <div id="resultadoNombre" class="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        // Ejemplo 1: Verificar edad
+        function verificarEdad() {
+            let edad = document.getElementById("edad").value;
+            let resultado = document.getElementById("resultadoEdad");
+
+            if (edad === "") {
+                resultado.innerHTML = "⚠️ Por favor ingresa una edad";
+                resultado.className = "resultado error";
+                resultado.style.display = "block";
+                return;
+            }
+
+            edad = parseInt(edad);
+
+            if (edad >= 18) {
+                resultado.innerHTML = "✅ Eres mayor de edad";
+                resultado.className = "resultado mayor";
+            } else {
+                resultado.innerHTML = "⚠️ Eres menor de edad";
+                resultado.className = "resultado menor";
+            }
+
+            resultado.style.display = "block";
+        }
+
+        // Ejemplo 2: Calificaciones
+        function verificarNota() {
+            let nota = document.getElementById("nota").value;
+            let resultado = document.getElementById("resultadoNota");
+
+            if (nota === "") {
+                resultado.innerHTML = "⚠️ Por favor ingresa una nota";
+                resultado.className = "resultado error";
+                resultado.style.display = "block";
+                return;
+            }
+
+            nota = parseInt(nota);
+
+            if (nota < 0 || nota > 100) {
+                resultado.innerHTML = "⚠️ La nota debe estar entre 0 y 100";
+                resultado.className = "resultado error";
+            } else if (nota >= 90) {
+                resultado.innerHTML = "🌟 ¡Excelente! Tu calificación es sobresaliente";
+                resultado.className = "resultado excelente";
+            } else if (nota >= 70) {
+                resultado.innerHTML = "👍 ¡Aprobado! Buen trabajo";
+                resultado.className = "resultado aprobado";
+            } else {
+                resultado.innerHTML = "😞 Reprobado. ¡Sigue intentando!";
+                resultado.className = "resultado reprobado";
+            }
+
+            resultado.style.display = "block";
+        }
+
+        // Ejemplo 3: Verificar texto vacío
+        function verificarNombre() {
+            let nombre = document.getElementById("nombre").value;
+            let resultado = document.getElementById("resultadoNombre");
+
+            if (nombre === "" || nombre.trim() === "") {
+                resultado.innerHTML = "⚠️ Por favor ingresa tu nombre";
+                resultado.className = "resultado error";
+            } else {
+                resultado.innerHTML = "👋 ¡Hola " + nombre + "! Bienvenido/a";
+                resultado.className = "resultado success";
+            }
+
+            resultado.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
