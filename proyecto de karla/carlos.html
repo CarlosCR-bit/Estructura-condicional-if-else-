@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Calificación - IES Tecnológico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Calificación Tecnológico</h1>
+    </header>
+
+    <main>
+        <section>
+            <h3>Registro de Estudiante</h3>
+            <form id="formRegistro">
+                <label>Nombre:</label>
+                <input type="text" id="nombre" required>
+                
+                <label>Carrera:</label>
+                <select id="carrera" required>
+                    <option value="">Seleccione</option>
+                    <option value="Administración de Empresas">Administración de Empresas</option>
+                    <option value="Arquitectura TI">Arquitectura de Plataformas TI</option>
+                    <option value="Asistencia Administrativa">Asistencia Administrativa</option>
+                    <option value="Contabilidad">Contabilidad</option>
+                    <option value="Electrónica Industrial">Electrónica Industrial</option>
+                    <option value="Enfermería Técnica">Enfermería Técnica</option>
+                    <option value="Guía Oficial de Turismo">Guía Oficial de Turismo</option>
+                    <option value="Laboratorio Clínico">Laboratorio Clínico</option>
+                    <option value="Mecánica de Producción">Mecánica de Producción</option>
+                    <option value="Mecatrónica Automotriz">Mecatrónica Automotriz</option>
+                    <option value="Secretariado Ejecutivo">Secretariado Ejecutivo</option>
+                </select>
+                
+                <label>Curso:</label>
+                <input type="text" id="curso" required>
+                
+                <label>Notas (0-20):</label>
+                <span class="notas-grid">
+                    <input type="number" id="n1" min="0" max="20" placeholder="Nota 1" required>
+                    <input type="number" id="n2" min="0" max="20" placeholder="Nota 2" required>
+                    <input type="number" id="n3" min="0" max="20" placeholder="Nota 3" required>
+                    <input type="number" id="n4" min="0" max="20" placeholder="Nota 4" required>
+                </span>
+                
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Calificaciones</h3>
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <th>Alumno</th>
+                        <th>Carrera</th>
+                        <th>Curso</th>
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>N3</th>
+                        <th>N4</th>
+                        <th>Promedio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="proyecto.js"></script>
+</body>
+</html>
